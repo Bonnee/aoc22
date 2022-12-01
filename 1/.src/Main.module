@@ -1,0 +1,32 @@
+' Gambas module file
+
+Public Sub Main()
+  Dim hFile As File
+  Dim sLine As String
+
+  hFile = Open "input" For Input 
+  
+  Dim cal As Integer[]
+  cal = New Integer[]
+  Dim i As Integer
+  i = 0
+  cal.Add(0, i)
+
+  While Not Eof(hFile)
+    Line Input #hFile, sLine
+    If sLine == "" Then
+      
+      Print cal[i]
+      i += 1
+      cal.Add(0, i)
+    Else
+      cal[i] += CInt(sLine)
+    End If
+  Wend
+  cal.Sort(gb.Descent)
+  Print cal[0]
+  Print cal[1]
+  Print cal[2]
+  
+  Print cal[0] + cal[1] + cal[2]
+End
